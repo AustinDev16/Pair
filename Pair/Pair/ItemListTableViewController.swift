@@ -81,7 +81,7 @@ class ItemListTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath)
-        let indexInArray = indexPathForRowInSectionedTableView(indexPath.section, index: indexPath.row)
+        let indexInArray = indexForRowInSectionedTableView(indexPath.section, index: indexPath.row)
         
         let item = ListItemController.sharedController.itemList[indexInArray]
         
@@ -97,7 +97,7 @@ class ItemListTableViewController: UITableViewController {
         }
     }
     
-    private func indexPathForRowInSectionedTableView(section: Int, index: Int) -> Int {
+    private func indexForRowInSectionedTableView(section: Int, index: Int) -> Int {
         let items = ListItemController.sharedController.itemList
         if (section + 1) * 2 > items.count {
             return items.count - 1
