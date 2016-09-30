@@ -13,7 +13,12 @@ class ListItemController {
     
     static let sharedController = ListItemController()
     
-    private(set) var itemList: [ListItem] = []
+    private(set) var itemList: [ListItem] = [] {
+        didSet{
+            let notification = NSNotification(name: "itemListUpdated", object: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
+    }
     
     init(){
         

@@ -16,6 +16,7 @@
 		FA49301A1D9EBAC00095B4F8 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4930181D9EBAC00095B4F8 /* ListItem.swift */; };
 		FA49301C1D9EBB1F0095B4F8 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA49301B1D9EBB1F0095B4F8 /* Stack.swift */; };
 		FA4930201D9EBE2A0095B4F8 /* ListItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA49301F1D9EBE2A0095B4F8 /* ListItemController.swift */; };
+		FA4930221D9EC5540095B4F8 /* ItemListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4930211D9EC5540095B4F8 /* ItemListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		FA4930181D9EBAC00095B4F8 /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListItem.swift; path = ../ListItem.swift; sourceTree = "<group>"; };
 		FA49301B1D9EBB1F0095B4F8 /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = ../Stack.swift; sourceTree = "<group>"; };
 		FA49301F1D9EBE2A0095B4F8 /* ListItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemController.swift; sourceTree = "<group>"; };
+		FA4930211D9EC5540095B4F8 /* ItemListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				FA49301E1D9EBD120095B4F8 /* ModelController */,
 				FA49301D1D9EBD070095B4F8 /* Model */,
+				FA4930231D9EC5610095B4F8 /* ViewController */,
 				FA4930021D9EB9020095B4F8 /* AppDelegate.swift */,
 				FA4930061D9EB9020095B4F8 /* Main.storyboard */,
 				FA4930091D9EB9020095B4F8 /* Assets.xcassets */,
@@ -90,6 +93,14 @@
 				FA49301B1D9EBB1F0095B4F8 /* Stack.swift */,
 			);
 			name = ModelController;
+			sourceTree = "<group>";
+		};
+		FA4930231D9EC5610095B4F8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA4930211D9EC5540095B4F8 /* ItemListTableViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA49301A1D9EBAC00095B4F8 /* ListItem.swift in Sources */,
+				FA4930221D9EC5540095B4F8 /* ItemListTableViewController.swift in Sources */,
 				FA49301C1D9EBB1F0095B4F8 /* Stack.swift in Sources */,
 				FA4930201D9EBE2A0095B4F8 /* ListItemController.swift in Sources */,
 				FA4930191D9EBAC00095B4F8 /* ListItem+CoreDataProperties.swift in Sources */,
