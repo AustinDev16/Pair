@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import GameKit
 
 class ListItemController {
     
@@ -48,6 +49,9 @@ class ListItemController {
     }
     
     func randomizeEntries(){
+        
+        guard let shuffledArray = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(itemList) as? [ListItem] else {return}
+        self.itemList = shuffledArray
         
         
     }

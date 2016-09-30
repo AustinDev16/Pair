@@ -48,6 +48,8 @@ class ItemListTableViewController: UITableViewController {
         self.presentViewController(newItemAlertController, animated: true, completion: nil)
     }
     @IBAction func randomizeButtonTapped(sender: AnyObject) {
+        
+        ListItemController.sharedController.randomizeEntries()
     }
     
 
