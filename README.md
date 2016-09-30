@@ -17,6 +17,5 @@ Write a single view Pair Randomizer application that takes a list of objects and
 
 Take as much time as needed to complete the challenge. Add a note at the bottom of this README.md file with how long it took you to complete the challenge.
 
-Example:
+```I completed the challenge in 2.75 hrs.```
 
-```Completed in 3.5 hours.```
