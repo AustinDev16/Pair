@@ -16,6 +16,10 @@ class ItemListTableViewController: UITableViewController {
         self.title = "Pair Randomizer"
        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateTableView), name: "itemListUpdated", object: nil)
+        
+        ListItemController.sharedController.loadFromPersistedStorage()
+        ListItemController.sharedController.addMockData() // only if nothing returned from fetch
+        //ListItemController.sharedController.randomizeEntries()
     }
     
     func updateTableView(){
@@ -47,60 +51,74 @@ class ItemListTableViewController: UITableViewController {
         newItemAlertController.addAction(add)
         self.presentViewController(newItemAlertController, animated: true, completion: nil)
     }
+    
     @IBAction func randomizeButtonTapped(sender: AnyObject) {
         
         ListItemController.sharedController.randomizeEntries()
     }
     
-
-
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        
-        var numberOfSections = ListItemController.sharedController.itemList.count / 2
-        if numberOfSections % 2 != numberOfSections {
+        let items = ListItemController.sharedController.itemList
+        var numberOfSections = items.count/2
+        if numberOfSections * 2 < items.count {
             numberOfSections += 1
         }
-        print(numberOfSections)
-        return 1//numberOfSections
+    
+        return numberOfSections
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Group \(section + 1)"
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        var numberOfRows = 2
-        if section * 2 > ListItemController.sharedController.itemList.count{
-            numberOfRows = 1
-        }
-        return ListItemController.sharedController.itemList.count//numberOfRows
+        return rowsInSection(section)
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath)
-        let section = indexPath.section
-        let row = indexPath.row + 2 * section
-        let item = ListItemController.sharedController.itemList[indexPath.row]
+        let indexInArray = indexPathForRowInSectionedTableView(indexPath.section, index: indexPath.row)
+        
+        let item = ListItemController.sharedController.itemList[indexInArray]
         
         cell.textLabel?.text = item.name
         return cell
     }
 
+    private func rowsInSection(section: Int) -> Int {
+        if (section + 1) * 2 > ListItemController.sharedController.itemList.count {
+            return 1
+        } else {
+            return 2
+        }
+    }
+    
+    private func indexPathForRowInSectionedTableView(section: Int, index: Int) -> Int {
+        let items = ListItemController.sharedController.itemList
+        if (section + 1) * 2 > items.count {
+            return items.count - 1
+        } else {
+            return section * 2 + index
+        }
+    }
 
     
 
 
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let itemToBeDeleted = ListItemController.sharedController.itemList[indexPath.row]
-            ListItemController.sharedController.deleteListItem(itemToBeDeleted)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
+//    // Override to support editing the table view.
+//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == .Delete {
+//            let itemToBeDeleted = ListItemController.sharedController.itemList[indexPath.row]
+//            ListItemController.sharedController.deleteListItem(itemToBeDeleted)
+//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//        } else if editingStyle == .Insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }    
+//    }
 
 
 }
