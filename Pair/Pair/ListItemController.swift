@@ -21,11 +21,7 @@ class ListItemController {
         }
     }
     
-    init(){
-        
-    }
-    
-    // MARK: - ListItem
+    // MARK: - ListItem Functions
     func addMockData(){
         if itemList.count == 0{
             self.createListItem("Austin")
@@ -49,11 +45,8 @@ class ListItemController {
     }
     
     func randomizeEntries(){
-        
         guard let shuffledArray = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(itemList) as? [ListItem] else {return}
         self.itemList = shuffledArray
-        
-        
     }
     
     
@@ -79,7 +72,4 @@ class ListItemController {
         }
         
     }
-    
-    
-    
 }
